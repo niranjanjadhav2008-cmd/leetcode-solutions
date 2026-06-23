@@ -1,3 +1,5 @@
+// T.C. = O()
+// S.C. = O(1)
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {
