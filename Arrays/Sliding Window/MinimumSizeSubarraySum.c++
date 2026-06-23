@@ -1,35 +1,24 @@
+// T.C. = O(N)
+// S.C. = O(1)
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
         int n = nums.size();
-        if(n == 0){
-            return 0;
-        }
-        int minlength = INT_MAX;
-        int i = 0,j=0;
+        int l = 0;
         int sum = 0;
-        while(i<n){
-            if(sum<target && j<n){
-                sum += nums[j];
-                j++;
-            }
-            else if(sum >= target){
-                int length = j-i;
-                if(length<minlength){
-                    minlength = length;
-                }
-                sum -= nums[i];
-                i++;
-            }
-            else{
-                sum -= nums[i];
-                i++;
+        int minLength = INT_MAX;
+        for(int r = 0;r<nums.size();r++){
+            sum += nums[r];
+            while(sum>=target){
+                minLength = min(minLength,r-l+1);
+                sum -= nums[l];
+                l++;
             }
         }
-        if(minlength == INT_MAX){
-            return 0;
+        if(minLength != INT_MAX){
+            return minLength;
         }else{
-            return minlength;
+            return 0;
         }
     }
 };
