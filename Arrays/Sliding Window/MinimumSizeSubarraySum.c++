@@ -10,7 +10,7 @@ public:
         int sum = 0;
         while(i<n){
             if(sum<target && j<n){
-                sum += nums[j];
+                sum += nums[j];Ma
                 j++;
             }
             else if(sum >= target){
